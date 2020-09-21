@@ -1,0 +1,11 @@
+.register {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__image {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}

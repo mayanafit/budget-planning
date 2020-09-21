@@ -1,0 +1,76 @@
+* {
+    font-family: $fontFamily;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: $bgColor;
+    font-weight: 100%;
+    line-height: 1.3;
+    min-height: 100vh;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.flex {
+    display: flex;
+
+    &-fd-c {
+        flex-direction: column;
+    }
+
+    &-jc-c {
+        justify-content: center;
+    }
+
+    &-jc-sb {
+        justify-content: space-between;
+    }
+
+    &-ai-c {
+        align-items: center;
+    }
+
+    &-as-e {
+        align-self: flex-end;
+    }
+}
+
+button, .button {
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    background-color: $btnColor;
+    color: white;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        box-shadow: $boxShadow;
+    }
+}
+
+input {
+
+    width: 100%;
+    height: 25px;
+    font-size: 18px;
+    margin: 10px 0;
+    &:focus {
+        outline: none;
+    }
+}
