@@ -60,7 +60,6 @@ export const fetchBudget = () => {
             url: 'http://localhost:3000/budgets',
         })
         .then((data) => {
-            console.log(data.data, `ini data`)
             dispatch({
                 type: 'FETCH_BUDGETS',
                 payload: data.data,
@@ -72,6 +71,13 @@ export const fetchBudget = () => {
 export const setStatus = (stat) => {
     return {
         type: 'STATUS_LOGIN',
+        payload: stat,
+    }
+}
+
+export const setStatusRegister = (stat) => {
+    return {
+        type: 'STATUS_REGISTER',
         payload: stat,
     }
 }
@@ -97,7 +103,7 @@ export const newUser = (user) => {
             localStorage.setItem('access_token', data.data.access_token)
             localStorage.setItem('name', data.data.name)
             dispatch({
-                type: 'STATUS_LOGIN',
+                type: 'STATUS_REGISTER',
                 payload: true,
             })
             dispatch(fetchBudget())

@@ -2,6 +2,7 @@ const initState = {
     lists: [],
     login: false,
     add: false,
+    register: false,
 }
 
 const mainReducer = (state = initState, action) => {
@@ -17,6 +18,10 @@ const mainReducer = (state = initState, action) => {
         case "STATUS_LOGIN":
             return {
                 ...state, login: action.payload
+            }
+        case "STATUS_REGISTER":
+            return {
+                ...state, register: action.payload
             }
         case "STATUS_ADD":
         return {

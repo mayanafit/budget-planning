@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormLogReg } from '../Components';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStatusRegister } from '../store/action';
 import logo from '../assets/logo.png';
 import landing from '../assets/landing-image.png';
 
+
 const LoginPage = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const { login } = useSelector(state => state)
+    useEffect(() => {
+        dispatch(setStatusRegister(false))
+    },[dispatch])
+    useEffect(() => {
+        if (login) history.push(`/dashboard`)
+    },[login, history])
     return(
         <section className="login flex">
             <div>

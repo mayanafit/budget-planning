@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { newUser, loginUser } from '../store/action';
 
 const FormLogReg = ({page}) => {
-    const history = useHistory()
     const dispatch = useDispatch()
-    const { login } = useSelector(state => state)
     const [name, setName] = useState(``)
     const [password, setPassword] = useState(``)
     const [repeat, setRepeat] = useState(``)
     const [alert, setAlert] = useState(false)
     const [msg, setMsg] = useState(``)
-
-    useEffect(() => {
-        if (login) history.push(`/dashboard`)
-    },[login, history])
 
     const submitPage = (e) => {
         e.preventDefault()
