@@ -4,7 +4,7 @@ export const addExpense = ({desc, amount}) => {
     return (dispatch) => {
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/budgets',
+            url: 'http://13.229.44.89:7000/budgets',
             headers: {
                 access_token: localStorage.access_token
             },
@@ -29,7 +29,7 @@ export const addIncome = ({desc, amount}) => {
     return (dispatch) => {
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/budgets',
+            url: 'http://13.229.44.89:7000/budgets',
             headers: {
                 access_token: localStorage.access_token
             },
@@ -57,7 +57,7 @@ export const fetchBudget = () => {
             headers: {
                 access_token: localStorage.access_token
             },
-            url: 'http://localhost:3000/budgets',
+            url: 'http://13.229.44.89:7000/budgets',
         })
         .then((data) => {
             dispatch({
@@ -94,7 +94,7 @@ export const newUser = (user) => {
     return (dispatch) => {
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/users/register',
+            url: 'http://13.229.44.89:7000/users/register',
             data: {
                 user
             }
@@ -118,7 +118,7 @@ export const loginUser = (user) => {
     return (dispatch) => {
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/users/login',
+            url: 'http://13.229.44.89:7000/users/login',
             data: {
                 user
             }
