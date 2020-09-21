@@ -6,7 +6,7 @@ import store from './store';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
-            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </Router>
       </div>

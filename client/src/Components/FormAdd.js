@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import { addExpense, addIncome } from '../store/action';
 
@@ -9,10 +9,15 @@ const FormAdd = ({page}) => {
     const dispatch = useDispatch()
     const [desc, setDesc] = useState(``)
     const [amount, setAmount] = useState(0)
+    const { add } = useSelector(state => state)
+    useEffect(() => {
+        if (add) history.push(`/dashboard`)
+    },[add, history])
+
     const submitInput = (e) => {
         e.preventDefault()
         
-        if (location.pathname === '/expenses') {
+        if (location.pathname === '/dashboard/expenses') {
             const data = {
                 desc,
                 amount: -Number(amount)
@@ -25,7 +30,6 @@ const FormAdd = ({page}) => {
             }
             dispatch(addIncome(data))
         }
-        history.push(`/dashboard`)
     }
     return (
         <section className="form">

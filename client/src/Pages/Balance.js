@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GrMoney } from 'react-icons/gr';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBudget, setAdd } from '../store/action';
 
 const Balance = (props) => {
     const { lists } = useSelector(state => state)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchBudget())
+        dispatch(setAdd(false))
+    },[dispatch])
     const toPageExpense = () => {
         props.history.push(`/dashboard/expenses`)
     }
@@ -29,9 +35,9 @@ const Balance = (props) => {
                     <table>
                         <tbody>
                             {
-                                lists.length > 0 ? lists.sort((a,b) => (b.date-a.date)).map((list,index) => (
+                                lists.length > 0 ? lists.sort((a,b) => (new Date(b.date)-new Date(a.date))).map((list,index) => (
                                     <tr key={index}>
-                                        <td>{list.date.toLocaleDateString()}</td>
+                                        <td>{new Date(list.date).toLocaleDateString()}</td>
                                         <td>{list.desc}</td>
                                         <td style={{color: list.amount < 0 ? 'red' : 'green'}}>{list.amount.toLocaleString()}</td>
                                     </tr>

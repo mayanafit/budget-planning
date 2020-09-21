@@ -5,7 +5,7 @@ const AddPage = (props) => {
     return (
         <>
             {
-                props.location.pathname === '/expenses' ? <FormAdd page="Expense"/> : <FormAdd page="Income"/>
+                props.location.pathname === '/dashboard/expenses' ? <FormAdd page="Expense"/> : <FormAdd page="Income"/>
             }
         </>
     )

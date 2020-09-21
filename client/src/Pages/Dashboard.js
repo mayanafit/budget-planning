@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../assets/logo.png';
 import { GoSignOut } from 'react-icons/go';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
 import { AddPage, Balance } from '../Pages';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStatus, fetchBudget } from '../store/action';
 
-
-const Dashboard = (props) => {
+const Dashboard = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const { login } = useSelector(state => state)
+    useEffect(() => {
+        dispatch(fetchBudget())
+    },[dispatch])
+    useEffect(() => {
+        if (!login) history.push(`/`)
+    }, [login, history])
     const logout = () => {
-        localStorage.clear()
-        props.history.push(`/`)
+        dispatch(setStatus(false))
+        localStorage.clear()   
     }
     return(
         <section className="dashboard">
